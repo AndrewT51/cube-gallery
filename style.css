@@ -1,0 +1,94 @@
+html,
+body {
+  border: 0;
+  margin: 0;
+
+}
+.clearfix:after{
+  content:"";
+  display: table;
+  clear: both;
+}
+
+.btn{
+  height: 100%;
+  width: 10%;
+  border: 1px solid red;
+  display: table-cell;
+}
+
+.container{
+  margin: 40px auto;
+  display:table;
+  width:80%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.context-3d {
+  float:left;
+  width:100%;
+  background-color: beige;
+  perspective: 800px;
+  position: relative;
+  perspective-origin: 50% 0%;
+  overflow: hidden;
+}
+
+#cube {
+  transform-style: preserve-3d;
+  width: 200px;
+  height:200px;
+  margin: 80px auto;
+  transition: 2s linear;
+  transform: rotate3d(0,1,0,0deg);
+}
+
+.circle{
+  transform: translate3d(75px,90px,0) rotateY(-45deg);
+  transition: 2s linear;
+  width: 50px;
+  height: 50px;
+  background-image: radial-gradient(40px at 15px 10px,white,darkred 60%);
+  border-radius: 50%;
+  box-shadow: 0 0 20px orange, 0 0 30px white;
+}
+.face {
+  /*backface-visibility: hidden;*/
+  border: black solid 1px;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  background-color: lightgrey;
+}
+
+.face-front {
+  transform: translateZ(100px);
+  background-image: url("pics/pic1.jpg");
+  background-size: cover;
+}
+.face-back {
+  background-image: url("pics/pic2.jpg");
+  background-size: cover;
+  transform:rotateY(180deg) translateZ(100px);
+}
+.face-left {
+
+  background-image: url("pics/pic3.jpg");
+  background-size: cover;
+  transform: rotateY(270deg) translateZ(100px) ;
+}
+.face-right {
+  background-image: url("pics/pic4.jpg");
+  background-size: cover;
+  transform: rotateY(90deg) translateZ(100px);
+}
+.face-top {
+  background-color: purple;
+  transform: rotateX(90deg) translateZ(100px);
+}
+.face-bottom {
+  background-image: radial-gradient(100px at 50% 50%, white -10%, grey 120%);
+
+  transform: rotateX(90deg) translateZ(-100px);
+}
