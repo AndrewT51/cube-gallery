@@ -28,30 +28,39 @@ body {
 .context-3d {
   float:left;
   width:100%;
-  background-color: beige;
-  perspective: 800px;
+  -webkit-perspective: 800px;
+          perspective: 800px;
   position: relative;
-  perspective-origin: 50% 0%;
+  -webkit-perspective-origin: 50% 0%;
+          perspective-origin: 50% 0%;
   overflow: hidden;
 }
 
 #cube {
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
   width: 200px;
   height:200px;
   margin: 80px auto;
+  -webkit-transition: 2s linear;
   transition: 2s linear;
-  transform: rotate3d(0,1,0,0deg);
+  -webkit-transform: rotate3d(0,1,0,0deg);
+          transform: rotate3d(0,1,0,0deg);
 }
 
 .circle{
-  transform: translate3d(75px,90px,0) rotateY(-45deg);
+  -webkit-transform: translate3d(75px,90px,0) rotateY(-45deg);
+          transform: translate3d(75px,90px,0) rotateY(-45deg);
+  -webkit-transition: 2s linear;
   transition: 2s linear;
   width: 50px;
   height: 50px;
+  background-image: -webkit-radial-gradient(15px 10px,40px,white,darkred 60%);
   background-image: radial-gradient(40px at 15px 10px,white,darkred 60%);
   border-radius: 50%;
-  box-shadow: 0 0 20px orange, 0 0 30px white;
+  box-shadow: 0 0 10px orange, 0 0 10px white;
+  -webkit-animation: glow 3s infinite;
+          animation: glow 3s infinite;
 }
 .face {
   /*backface-visibility: hidden;*/
@@ -63,32 +72,139 @@ body {
 }
 
 .face-front {
-  transform: translateZ(100px);
+  -webkit-transform: translateZ(100px);
+          transform: translateZ(100px);
   background-image: url("pics/pic1.jpg");
   background-size: cover;
 }
 .face-back {
   background-image: url("pics/pic2.jpg");
   background-size: cover;
-  transform:rotateY(180deg) translateZ(100px);
+  -webkit-transform:rotateY(180deg) translateZ(100px);
+          transform:rotateY(180deg) translateZ(100px);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-backface-visibility: visible;
+          backface-visibility: visible;
 }
+.face-back-cover {
+  /*background-image: radial-gradient(200px at 50% 50%, rgba(200,20,20,.1) 10%, blue 200%);*/
+  -webkit-transform: rotateY(180deg) translateZ(99px);
+          transform: rotateY(180deg) translateZ(99px);
+  /*background-image: radial-gradient(100px at 50% 50%, transparent -10%, grey 120%);*/
+  /*background-image: radial-gradient(200px at 50% 50%, rgba(200,20,20,.1) 10%, blue 200%);*/
+  background-color: rgba(200,20,20,.4);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
 .face-left {
 
   background-image: url("pics/pic3.jpg");
   background-size: cover;
-  transform: rotateY(270deg) translateZ(100px) ;
+  -webkit-transform: rotateY(270deg) translateZ(100px) ;
+          transform: rotateY(270deg) translateZ(100px) ;
 }
 .face-right {
   background-image: url("pics/pic4.jpg");
   background-size: cover;
-  transform: rotateY(90deg) translateZ(100px);
+  -webkit-transform: rotateY(90deg) translateZ(100px);
+          transform: rotateY(90deg) translateZ(100px);
 }
 .face-top {
   background-color: purple;
-  transform: rotateX(90deg) translateZ(100px);
+  -webkit-transform: rotateX(90deg) translateZ(100px);
+          transform: rotateX(90deg) translateZ(100px);
 }
 .face-bottom {
+  background-image: -webkit-radial-gradient(50% 50% 100px, white -10%, grey 120%);
   background-image: radial-gradient(100px at 50% 50%, white -10%, grey 120%);
 
-  transform: rotateX(90deg) translateZ(-100px);
+  -webkit-transform: rotateX(90deg) translateZ(-100px);
+
+          transform: rotateX(90deg) translateZ(-100px);
+  -webkit-animation: glowBottom 3s infinite;
+          animation: glowBottom 3s infinite;
 }
+
+video {
+  position: absolute;
+  width:130%;
+  /*min-height:100%;*/
+/*  height:auto;
+  width:auto;*/
+}
+
+@-webkit-keyframes glow {
+  50% {
+     box-shadow: 0 0 50px orange, 0 0 20px white;
+  }
+
+
+}
+
+@keyframes glow {
+  50% {
+     box-shadow: 0 0 50px orange, 0 0 20px white;
+  }
+
+
+}
+
+@-webkit-keyframes glowBottom {
+  10% ,90%{
+    background-image: -webkit-radial-gradient(50% 50% 100px, white -5%, grey 120%);
+    background-image: radial-gradient(100px at 50% 50%, white -5%, grey 120%);
+
+  }
+  20% , 80%{
+    background-image: -webkit-radial-gradient(50% 50% 100px, white 0%, grey 120%);
+    background-image: radial-gradient(100px at 50% 50%, white 0%, grey 120%);
+
+  }
+  30%, 70% {
+    background-image: -webkit-radial-gradient(50% 50% 100px, white 5%, grey 120%);
+    background-image: radial-gradient(100px at 50% 50%, white 5%, grey 120%);
+
+  }
+  40%, 60%{
+    background-image: -webkit-radial-gradient(50% 50% 100px, white 10%, grey 120%);
+    background-image: radial-gradient(100px at 50% 50%, white 10%, grey 120%);
+
+  }
+  50% {
+    background-image: -webkit-radial-gradient(50% 50% 100px, white 10%, grey 120%);
+    background-image: radial-gradient(100px at 50% 50%, white 10%, grey 120%);
+  }
+
+}
+
+@keyframes glowBottom {
+  10% ,90%{
+    background-image: -webkit-radial-gradient(50% 50% 100px, white -5%, grey 120%);
+    background-image: radial-gradient(100px at 50% 50%, white -5%, grey 120%);
+
+  }
+  20% , 80%{
+    background-image: -webkit-radial-gradient(50% 50% 100px, white 0%, grey 120%);
+    background-image: radial-gradient(100px at 50% 50%, white 0%, grey 120%);
+
+  }
+  30%, 70% {
+    background-image: -webkit-radial-gradient(50% 50% 100px, white 5%, grey 120%);
+    background-image: radial-gradient(100px at 50% 50%, white 5%, grey 120%);
+
+  }
+  40%, 60%{
+    background-image: -webkit-radial-gradient(50% 50% 100px, white 10%, grey 120%);
+    background-image: radial-gradient(100px at 50% 50%, white 10%, grey 120%);
+
+  }
+  50% {
+    background-image: -webkit-radial-gradient(50% 50% 100px, white 10%, grey 120%);
+    background-image: radial-gradient(100px at 50% 50%, white 10%, grey 120%);
+  }
+
+}
+
+
